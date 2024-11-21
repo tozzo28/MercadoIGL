@@ -1,0 +1,75 @@
+﻿@model MercadoIGL.Models.Venda
+
+@{
+    ViewData["Title"] = "Create Venda";
+}
+
+<h1>Create Venda</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Campo Produto com DropDownList -->
+            <div class="form-group">
+                <label asp-for="ProdutoID" class="control-label"></label>
+                <select asp-for="ProdutoID" class="form-control" asp-items="ViewBag.Produtos">
+                    <option value="">Selecione um produto</option>
+                </select>
+                <span asp-validation-for="ProdutoID" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Cliente com DropDownList -->
+            <div class="form-group">
+                <label asp-for="ClienteID" class="control-label"></label>
+                <select asp-for="ClienteID" class="form-control" asp-items="ViewBag.Clientes">
+                    <option value="">Selecione um cliente</option>
+                </select>
+                <span asp-validation-for="ClienteID" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Funcionario com DropDownList -->
+            <div class="form-group">
+                <label asp-for="FuncionarioID" class="control-label"></label>
+                <select asp-for="FuncionarioID" class="form-control" asp-items="ViewBag.Funcionarios">
+                    <option value="">Selecione um funcionário</option>
+                </select>
+                <span asp-validation-for="FuncionarioID" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Quantidade -->
+            <div class="form-group">
+                <label asp-for="QntdVendida" class="control-label"></label>
+                <input asp-for="QntdVendida" class="form-control" />
+                <span asp-validation-for="QntdVendida" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Valor Total -->
+            <div class="form-group">
+                <label asp-for="valorTotal" class="control-label"></label>
+                <input asp-for="valorTotal" class="form-control" />
+                <span asp-validation-for="valorTotal" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Data com input type="date" -->
+            <div class="form-group">
+                <label asp-for="data" class="control-label"></label>
+                <input asp-for="data" class="form-control" type="date" />
+                <span asp-validation-for="data" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

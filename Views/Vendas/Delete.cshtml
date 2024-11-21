@@ -1,0 +1,58 @@
+﻿@model MercadoIGL.Models.Venda
+
+@{
+    ViewData["Title"] = "Confirmação de Exclusão";
+}
+
+<h1>Confirmação de Exclusão</h1>
+
+<p>Tem certeza de que deseja excluir esta venda?</p>
+
+<div>
+    <h4>Venda</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Produto
+        </dt>
+        <dd class="col-sm-10">
+            @Model.produto?.descricao
+        </dd>
+        <dt class="col-sm-2">
+            Cliente
+        </dt>
+        <dd class="col-sm-10">
+            @Model.cliente?.nome
+        </dd>
+        <dt class="col-sm-2">
+            Funcionário
+        </dt>
+        <dd class="col-sm-10">
+            @Model.funcionario?.nome
+        </dd>
+        <dt class="col-sm-2">
+            Quantidade Vendida
+        </dt>
+        <dd class="col-sm-10">
+            @Model.QntdVendida
+        </dd>
+        <dt class="col-sm-2">
+            Valor Total
+        </dt>
+        <dd class="col-sm-10">
+            @Model.valorTotal.ToString("C")
+        </dd>
+        <dt class="col-sm-2">
+            Data
+        </dt>
+        <dd class="col-sm-10">
+            @Model.data?.ToString("dd/MM/yyyy")
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="idVenda" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MercadoIGL.Models.Venda>
+
+@{
+    ViewData["Title"] = "Lista de Vendas";
+}
+
+<h1>Lista de Vendas</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Cliente</th>
+            <th>Funcionario</th>
+            <th>Quantidade Vendida</th>
+            <th>Valor Total</th>
+            <th>Data</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+
+        {
+            <tr>
+                <td>@item.produto?.descricao</td> <!-- Exibe o nome do Produto -->
+                <td>@item.cliente?.nome</td>      <!-- Exibe o nome do Cliente -->
+                <td>@item.funcionario?.nome</td>  <!-- Exibe o nome do Funcionario -->
+                <td>@item.QntdVendida</td>
+                <td>@item.valorTotal.ToString("C")</td>
+                <td>@item.data?.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.idVenda" class="btn btn-primary">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.idVenda" class="btn btn-info">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.idVenda" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Create" class="btn btn-success">Criar Nova Venda</a>
+</div>

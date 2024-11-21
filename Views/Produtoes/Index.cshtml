@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MercadoIGL.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<h1>Produtos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fornecedor.empresa) <!-- Nome do Fornecedor -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valorUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estoque)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fornecedor.empresa) <!-- Exibe o nome do fornecedor -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valorUnitario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estoque)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.idProduto">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.idProduto">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.idProduto">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Create">Create New</a>
+</div>
